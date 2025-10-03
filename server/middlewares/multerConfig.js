@@ -1,7 +1,9 @@
 import multer from "multer";
 import fs from "fs";
 import path from "path";
-
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 // ensure tmp folder exists
 const tmpDir = path.join(__dirname, "..", "tmp");
 if (!fs.existsSync(tmpDir)) fs.mkdirSync(tmpDir);
@@ -30,4 +32,4 @@ const upload = multer({
   fileFilter,
 });
 
-module.exports = upload;
+export default upload;

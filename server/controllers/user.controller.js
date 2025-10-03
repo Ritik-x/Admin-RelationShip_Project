@@ -81,7 +81,7 @@ export const loginUser = async (req, res) => {
     return res.status(500).json({ message: "Something went wrong" });
   }
 };
-exports.me = async (req, res, next) => {
+export const me = async (req, res, next) => {
   try {
     const userId = req.user?.id;
     const user = await User.findById(userId).select("-password");

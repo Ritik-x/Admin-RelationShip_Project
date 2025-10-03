@@ -18,11 +18,10 @@ export const createAgent = async (req, res) => {
     const agent = await Agent.create({
       name,
       email,
-      password,
-      hashedPassword,
+      password: hashedPassword,
       mobile,
     });
-    await agent.save();
+    // await agent.save();
     res.status(201).json({
       message: "Agent created",
       agent: {
@@ -36,6 +35,19 @@ export const createAgent = async (req, res) => {
     console.log(error.message);
     return res.status(400).json({
       message: "agent Creation failed",
+    });
+  }
+};
+
+export const listAgents = async (req, res) => {
+  try {
+    const agents = await Agent.find()
+      .select("-password")
+      .sort({ createdAt: 1 });
+    return res.json(agents);
+  } catch (error) {
+    return res.status(400).json({
+      message: error.message,
     });
   }
 };
