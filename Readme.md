@@ -35,6 +35,52 @@ Admin can:
 cd server
 npm install
 
+````
+
+Create .env:
+```bash
+
+MONGODB_URI=<your_mongo_uri>
+JWT_SECRET=<your_secret>
+PORT=3000
+
+```
+
+
+Start server:
+```bash
+
+npm start
+
+```
+
+Frontend
+
+```bash
+
+cd ../client
+npm install
+npm run dev
+```
+Open: http://localhost:5173
+
+---
+
+Usage
+
+Login as Admin
+
+Create ≥5 agents
+
+Upload CSV file (Columns: FirstName, Phone, optional Notes)
+
+View distributed tasks on Dashboard
+
+
+
+
+
+
 
 
 
