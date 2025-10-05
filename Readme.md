@@ -93,7 +93,7 @@ client/
 
 🎥 Demo Video:
 
-- [Insert Google Drive link here]
+- https://drive.google.com/file/d/1UW6T8uexg4SYA-xAD4p7GSlXylcAXzgP/view?usp=drive_link
 
 
 
