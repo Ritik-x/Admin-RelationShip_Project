@@ -29,6 +29,7 @@ export const createAgent = async (req, res) => {
         name: agent.name,
         email: agent.email,
         mobile: agent.mobile,
+        createdAt: agent.createdAt,
       },
     });
   } catch (error) {

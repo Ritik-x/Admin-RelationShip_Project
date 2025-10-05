@@ -16,7 +16,7 @@ export const registerUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     // create user
 
-    const user = await User.modelName.create({
+    const user = await User.create({
       name,
       email,
       password: hashedPassword,
@@ -35,7 +35,7 @@ export const registerUser = async (req, res) => {
       user: {
         id: user._id, // ❌ pehle _id likha tha
         email: user.email,
-        fullName: user.fullName,
+        name: user.name,
       },
     });
   } catch (error) {
@@ -63,7 +63,7 @@ export const loginUser = async (req, res) => {
 
     const token = jwt.sign(payload, jwtSecret, { expiresIn: "7d" });
 
-    res.cookie("token ", token, {
+    res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
@@ -73,7 +73,7 @@ export const loginUser = async (req, res) => {
       user: {
         id: user._id,
         email: user.email,
-        fullName: user.fullName,
+        fullName: user.name,
       },
     });
   } catch (error) {

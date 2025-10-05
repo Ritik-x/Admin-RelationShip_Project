@@ -8,12 +8,19 @@ import urouter from "./routes/upload.js";
 import cookieParser from "cookie-parser";
 import Task from "./models/task.js";
 const app = express();
+
+const corsOptions = {
+  origin: "http://localhost:5173", // Your frontend URL
+  credentials: true, // Allow cookies
+  optionsSuccessStatus: 200,
+};
+
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(cors(corsOptions));
 connectDB();
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
 app.use("/user", router);
 app.use("/agent", arouter);
@@ -24,7 +31,7 @@ app.get("/api/agent/:agentId/contacts", async (req, res) => {
     const tasks = await Task.find({ assignedAgent: req.params.agentId }).sort({
       createdAt: 1,
     });
-    res.json(contacts);
+    res.json(tasks);
   } catch (err) {
     res.status(500).json({ message: "Server error" });
   }

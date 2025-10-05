@@ -6,16 +6,16 @@ import path from "path";
 import csv from "csvtojson";
 
 export const uploadndDistribute = async (req, res, next) => {
-  let filePath;
+  let tempFilePath;
   try {
     const file = req.file;
     if (!file) return res.status(400).json({ message: "File is required" });
-    const filePath = path.resolve(file.path);
+    tempFilePath = path.resolve(file.path);
 
     // Parse CSV to JSON.
     // csvtojson will try to parse CSV; for xlsx you'd normally use 'xlsx' but to keep dependencies small, we support CSV primarily.
     const jsonArray = await csv({ trim: true, checkType: false }).fromFile(
-      filePath
+      tempFilePath
     );
 
     // validate rows and normalize fields
@@ -40,7 +40,7 @@ export const uploadndDistribute = async (req, res, next) => {
         throw error;
       }
       return {
-        firstName: String(firstName).trim(),
+        title: String(firstName).trim(),
         phone: String(phone).trim(),
         notes: String(notes).trim(),
       };
@@ -76,8 +76,8 @@ export const uploadndDistribute = async (req, res, next) => {
     }
 
     // cleanup temp file
-    if (filePath && fs.existsSync(filePath)) {
-      fs.unlink(filePath, (err) => {
+    if (tempFilePath && fs.existsSync(tempFilePath)) {
+      fs.unlink(tempFilePath, (err) => {
         if (err) console.warn("Temp file removal failed", err);
       });
     }
@@ -88,7 +88,8 @@ export const uploadndDistribute = async (req, res, next) => {
     });
   } catch (err) {
     // cleanup and forward error
-    if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+    if (tempFilePath && fs.existsSync(tempFilePath))
+      fs.unlinkSync(tempFilePath);
     next(err);
   }
 };
