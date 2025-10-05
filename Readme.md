@@ -1,26 +1,25 @@
 # Admin-Relationship (MERN Stack Internship Assignment)
 
-## Description
+## 📌 Description  
 This is a MERN-stack project created as part of a machine test.  
 Admin can:
-- Login securely using JWT
-- Create, update, delete, and list agents
-- Upload CSV contact lists
-- Automatically distribute contacts equally among agents
-- View tasks per agent on a dashboard
+- 🔑 Login securely using JWT  
+- 👤 Create, update, delete, and list agents  
+- 📂 Upload CSV contact lists  
+- ⚖️ Automatically distribute contacts equally among agents  
+- 📊 View tasks per agent on a dashboard  
+---
+
+## ✨ Features  
+- 🔐 Admin authentication (JWT + HttpOnly cookie)  
+- 👥 Agent management (CRUD)  
+- 📤 Upload CSV & auto-distribute contacts  
+- 📈 Task dashboard with per-agent stats  
+- 💻 Simple, responsive frontend using React + Tailwind CSS  
 
 ---
 
-## Features
-- Admin authentication (JWT + HttpOnly cookie)
-- Agent management (CRUD)
-- Upload CSV & auto-distribute contacts
-- Task dashboard with per-agent stats
-- Simple, responsive frontend using React + Tailwind CSS
-
----
-
-## Tech Stack
+## 🛠️ Tech Stack  
 - **Frontend:** React, Tailwind CSS, Axios
 - **Backend:** Node.js, Express.js, Mongoose, JWT, Multer
 - **Database:** MongoDB
@@ -29,7 +28,7 @@ Admin can:
 
 ## Installation & Run
 
-### Backend
+### ▶️ Backend
 1. Go to the server folder:
 ```bash
 cd server
@@ -54,7 +53,7 @@ npm start
 
 ```
 
-Frontend
+▶️ Frontend
 
 ```bash
 
@@ -68,14 +67,33 @@ Open: http://localhost:5173
 
 Usage
 
-Login as Admin
 
-Create ≥5 agents
+- 🔑 Login as Admin
+- 👤 Create ≥5 agents
+- 📂 Upload CSV file (Columns: FirstName, Phone, optional Notes)
+- 📊 View distributed tasks on Dashboard
 
-Upload CSV file (Columns: FirstName, Phone, optional Notes)
+--
+Example CSV:
+```bash
+FirstName,Phone,Notes
+John,1234567890,Follow up
+Jane,9876543210,Test lead
 
-View distributed tasks on Dashboard
+```
 
+📂 Folder Structure:
+```
+server/
+  controllers/ models/ routes/ middlewares/ utils/ config/
+client/
+  src/
+    pages/ components/ services/ context/
+```
+
+🎥 Demo Video:
+
+- [Insert Google Drive link here]
 
 
 
